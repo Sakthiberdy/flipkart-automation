@@ -1,0 +1,7 @@
+webAutomation/pageObjects/ProductsPage.class
+webAutomation/pageObjects/CartPage.class
+webAutomation/pageObjects/HomePage.class
+webAutomation/pageObjects/OrderInfoPage.class
+webAutomation/pageObjects/ItemViewPage.class
+webAutomation/base.class
+webAutomation/pageObjects/SearchResultsPage.class

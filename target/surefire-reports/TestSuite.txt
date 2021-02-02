@@ -1,0 +1,25 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 39.176 s <<< FAILURE! - in TestSuite
+webAutomation.testCases.PurchaseFlow.orderFlow  Time elapsed: 25.917 s  <<< FAILURE!
+org.openqa.selenium.WebDriverException: 
+TypeError: browsingContextFn().currentWindowGlobal is null
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'healthi', ip: '192.168.0.175', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.0-62-generic', java.version: '1.8.0_275'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 84.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20210105180113, moz:geckodriverVersion: 0.28.0, moz:headless: false, moz:processID: 27534, moz:profile: /tmp/rust_mozprofileYEAqEx, moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 5.4.0-62-generic, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 79fcbcad-fd2f-4de9-a0d7-6ea6ff282d52
+*** Element info: {Using=xpath, value=//div[contains(text(),'My Cart')]}
+	at webAutomation.testCases.PurchaseFlow.orderFlow(PurchaseFlow.java:71)
+
+webAutomation.testCases.PurchaseFlow.tearDown  Time elapsed: 27.787 s  <<< FAILURE!
+org.openqa.selenium.NoSuchSessionException: 
+Tried to run command without establishing a connection
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'healthi', ip: '192.168.0.175', os.name: 'Linux', os.arch: 'amd64', os.version: '5.4.0-62-generic', java.version: '1.8.0_275'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 84.0.2, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20210105180113, moz:geckodriverVersion: 0.28.0, moz:headless: false, moz:processID: 27534, moz:profile: /tmp/rust_mozprofileYEAqEx, moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: LINUX, platformName: LINUX, platformVersion: 5.4.0-62-generic, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 79fcbcad-fd2f-4de9-a0d7-6ea6ff282d52
+	at webAutomation.testCases.PurchaseFlow.tearDown(PurchaseFlow.java:132)
+
