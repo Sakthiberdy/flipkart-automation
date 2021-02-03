@@ -2,11 +2,13 @@ package webAutomation.testCases;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -63,6 +65,7 @@ public class PurchaseFlow extends base {
             driver.switchTo().window(tabs.get(1));
 
             ItemViewPage itemViewPage = new ItemViewPage(driver);
+            rus.waitForPageLoads(driver);
             itemViewPage.getAddToCartButton().click();
 
             CartPage cartPage = new CartPage(driver);
@@ -78,7 +81,10 @@ public class PurchaseFlow extends base {
             wait.until(ExpectedConditions.visibilityOf(homePage.getCart()));
             homePage.getCart().click();
 
-            cartPage.getItemName(prop.getProperty("itemName"));
+            rus.waitForPageLoads(driver);
+            wait.until(ExpectedConditions.visibilityOf(cartPage.getMyCartText()));
+            boolean fEItemName = cartPage.getItemName(prop.getProperty("itemName")).isDisplayed();
+            Assert.assertTrue(fEItemName);
             cartPage.getPlaceOrderButton().click();
 
             OrderInfoPage orderInfoPage = new OrderInfoPage(driver);
@@ -98,6 +104,7 @@ public class PurchaseFlow extends base {
             orderInfoPage.getPincode().sendKeys(prop.getProperty("receiverPinCode"));
             orderInfoPage.getLocality().sendKeys(prop.getProperty("receiverLocality"));
             orderInfoPage.getAddress().sendKeys(prop.getProperty("receiverAddress"));
+            wait.until(ExpectedConditions.visibilityOf(orderInfoPage.getSaveAndDeliverHere()));
             orderInfoPage.getSaveAndDeliverHere().click();
 
             String emailId = orderInfoPage.getOrderConfirmationValue().getAttribute("value");
@@ -106,7 +113,9 @@ public class PurchaseFlow extends base {
             }
 
             orderInfoPage.getPurchaseContinueButton().click();
-            orderInfoPage.getNetBanking().click();
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+            jsExecutor.executeScript("arguments[0].focus;", orderInfoPage.getNetBanking());
+            jsExecutor.executeScript("arguments[0].click();", orderInfoPage.getNetBanking());
             Select select = new Select(orderInfoPage.getOtherBanks());
             select.selectByVisibleText(prop.getProperty("bankName"));
             orderInfoPage.getPayButton().click();
